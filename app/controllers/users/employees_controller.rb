@@ -52,6 +52,7 @@ class Users::EmployeesController < ApplicationController
   
   def delete_user
     authorize @user
+    @user.appointments.destroy_all
     @user.destroy
     respond_to do |format|
       format.html { redirect_to employees_path, notice: 'Employee was successfully destroyed.' }

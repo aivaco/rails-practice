@@ -69,7 +69,6 @@ class AppointmentsController < ApplicationController
   # DELETE /appointments/1.json
   def destroy
     authorize @appointment    #It's necessary to comment this line to make rspecs tests work.
-    
     @appointment.destroy
     respond_to do |format|
       format.html { redirect_to appointments_url, notice:  'Appointment was successfully destroyed.' }

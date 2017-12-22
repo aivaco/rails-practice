@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :appointments
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,7 +9,6 @@ class User < ActiveRecord::Base
     validates :email, presence: true, length: {maximum: 100},
                       format: {with: REGEX}
     validates :password, presence: true
-    # validates :role, presence: true
+    validates :role, presence: true
     
-    #has_secure_password
 end
