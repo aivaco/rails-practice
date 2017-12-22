@@ -1,0 +1,35 @@
+<h1>Listing Appointments</h1>
+<br>
+<table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%=User.find(appointment.user_id).email %></td>
+        <td><%=appointment.date %></td>
+        <td>
+          <%= link_to 'Show', appointment %>
+          <%if current_user.role == 1%>
+              <%=link_to 'Edit', edit_appointment_path(appointment) %>
+              <%=link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' }%>
+          <%end%>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%=
+  if current_user.role == 1
+    link_to 'New Appointment', new_appointment_path 
+  end
+%>

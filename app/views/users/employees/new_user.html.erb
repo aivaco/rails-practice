@@ -1,0 +1,31 @@
+<h2>Create new employees user</h2>
+
+<%= form_for @user, url: {action: "create_user"}, html: {class: "form-group"} do |f|%>
+
+  <div class="field">
+    <%= f.label :email, class: 'col-form-label' %><br />
+    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, class: 'col-form-label' %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, class: 'col-form-label' %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= hidden_field_tag :role, 0%>
+    <%= check_box_tag(:role, 1) %>
+    <%= label_tag(:role, "It will be an administrator?") %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create",  class: "btn btn-btn-primary" %>
+  </div>
+<% end %>
+<%= link_to 'Back', employees_path %>

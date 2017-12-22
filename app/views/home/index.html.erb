@@ -1,0 +1,21 @@
+<h1>Beauty Salon</h1>
+<i>Site under construction</i>
+<br>
+<br>
+<p>
+  Welcome to our website!
+  <br>
+  <%if user_signed_in?%>
+  Would you like to test our JSON methods? Please go to:
+    <ul>
+      <li>
+            <%=link_to 'Appointments list', '/appointments/getlist.json'%>
+      </li>
+      <li>
+            <%=link_to 'An appointment', '/appointments/2/singular.json' %>
+      </li>
+    </ul>
+ <%end%>
+</p>
+
+

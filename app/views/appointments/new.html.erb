@@ -1,0 +1,12 @@
+<h1>New Appointment</h1>
+
+<%= form_for @appointment, url: {action: "create"}, html: {class: "form-group"} do |f| %>
+  <%= f.label "Select a user:", class: 'col-form-label'%>
+  <%= f.collection_select(:user_id, User.all, :id,:email, {},  {:class=>"form-control"}) %>
+  <%= f.label "Select appointment day:", class: 'col-form-label'%>
+  <%= f.date_field :date , class: "form-control"%>
+  <br>
+  <%= f.submit "Create", class: "btn btn-btn-primary" %>
+<% end %>
+
+<%= link_to 'Back', appointments_path %>

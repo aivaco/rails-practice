@@ -1,0 +1,31 @@
+<h2>Edit employees user</h2>
+
+<%= form_for @user, url: {action: "update_user"}, html: {class: "form-group"} do |f|%>
+
+  <div class="field">
+    <%= f.label :email, class: 'col-form-label' %><br />
+    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label "New password", class: 'col-form-label' %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"New password confirmation", class: 'col-form-label' %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= hidden_field_tag :role, 0%>
+    <%= check_box_tag(:role,true, @user.role?) %>
+    <%= label_tag(:role, "It will be an administrator?") %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Edit",  class: "btn btn-btn-primary" %>
+  </div>
+<% end %>
+<%= link_to 'Back', employees_path %>
